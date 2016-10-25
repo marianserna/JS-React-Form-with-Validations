@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class LogIn extends React.Component {
   render() {
@@ -7,6 +8,7 @@ class LogIn extends React.Component {
         <input type="email" />
         <input type="password"/>
         <button>Log In</button>
+        <Link to='/'>CANCEL</Link>
       </form>
     )
   }
