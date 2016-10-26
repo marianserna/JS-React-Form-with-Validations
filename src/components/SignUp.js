@@ -97,37 +97,61 @@ class SignUp extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.submit.bind(this)}>
-        {this.renderErrors()}
-        <div className="input-field">
-          <label htmlFor="username">Username</label>
-          <input type="text" placeholder="Username" id="username" ref={(input) => { this.usernameInput = input}} />
+      <div id="signup-wrapper">
+        <div className="inner-container">
+          <form onSubmit={this.submit.bind(this)}>
+            {this.renderErrors()}
+            <div className="input-field">
+              <input type="text" placeholder="Username" id="username" ref={(input) => { this.usernameInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="password" placeholder="Password" ref={(input) => { this.passwordInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="password" placeholder="Confirm Password" ref={(input) => { this.confirmPasswordInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="First Name" ref={(input) => { this.firstNameInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="Last Name" ref={(input) => { this.lastNameInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="email" placeholder="Email" ref={(input) => { this.emailInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="tel" placeholder="Phone Number" ref={(input) => { this.phoneInput = input}} />
+            </div>
+            <div className="input-field">
+              <select ref={(input) => { this.countryInput = input}}>
+                <option key="placeholder" value="">Country</option>
+                {this.renderCountries()}
+              </select>
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="Province" ref={(input) => { this.provinceInput = input}}/>
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="City" ref={(input) => { this.cityInput = input}}/>
+            </div>
+            <div className="input-field">
+              <select ref={(input) => { this.ageInput = input}}>
+                <option key="placeholder" value="">Age</option>
+                {this.renderAges()}
+              </select>
+            </div>
+            <div className="input-field for-radio">
+              <label><input type="radio" name="gender" value="male" onChange={this.changeGender.bind(this)} /> Male</label>
+              <label><input type="radio" name="gender" value="female" onChange={this.changeGender.bind(this)} /> Female</label>
+              <label><input type="radio" name="gender" value="other" onChange={this.changeGender.bind(this)} /> Other</label>
+            </div>
+            <div className="input-field">
+              <button className="button">Submit</button>
+              <Link to='/' className="button">Cancel</Link>
+            </div>
+          </form>
         </div>
-
-        <input type="password" placeholder="Password" ref={(input) => { this.passwordInput = input}} />
-        <input type="password" placeholder="Confirm Password" ref={(input) => { this.confirmPasswordInput = input}} />
-        <input type="text" placeholder="First Name" ref={(input) => { this.firstNameInput = input}} />
-        <input type="text" placeholder="Last Name" ref={(input) => { this.lastNameInput = input}} />
-        <input type="email" placeholder="email" ref={(input) => { this.emailInput = input}} />
-        <input type="tel" placeholder="Phone Number" ref={(input) => { this.phoneInput = input}} />
-        <select ref={(input) => { this.countryInput = input}}>
-          {this.renderCountries()}
-        </select>
-        <input type="text" placeholder="Province" ref={(input) => { this.provinceInput = input}}/>
-        <input type="text" placeholder="City" ref={(input) => { this.cityInput = input}}/>
-        <select ref={(input) => { this.ageInput = input}}>
-          {this.renderAges()}
-        </select>
-        <div>
-          <input type="radio" name="gender" value="male" onChange={this.changeGender.bind(this)} /> Male
-          <input type="radio" name="gender" value="female" onChange={this.changeGender.bind(this)} /> Female
-          <input type="radio" name="gender" value="other" onChange={this.changeGender.bind(this)} /> Other
-        </div>
-
-        <button>SUBMIT</button>
-        <Link to='/'>CANCEL</Link>
-
-      </form>
+      </div>
     )
   }
 
@@ -154,11 +178,13 @@ class SignUp extends React.Component {
   }
 
   renderErrors() {
-    return (
-      <ul>
-        {this.renderErrorValues()}
-      </ul>
-    )
+    if (this.state.errors.length > 0) {
+      return (
+        <ul className="errors">
+          {this.renderErrorValues()}
+        </ul>
+      )
+    }
   }
 
   renderErrorValues() {

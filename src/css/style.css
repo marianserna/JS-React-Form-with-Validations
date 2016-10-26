@@ -1,12 +1,12 @@
-.container {
+.container,
+#signup-wrapper {
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #212121;
 }
 .inner-container {
   width: 35vw;
-  height: 80vh;
   margin: 0 auto;
   position: relative;
   display: -webkit-box;
@@ -15,34 +15,92 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.middle h2 {
+h2 {
   display: block;
-  margin: 50px;
-  padding: 20px;
+  margin: 0px;
+  padding: 70px;
 }
 .button {
-  width: 75%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: column;
-      flex-flow: column;
-}
-.button a.sign,
-.button a.log {
   display: block;
+  width: 75%;
   text-decoration: none;
   text-align: center;
   color: #fff;
-  margin-bottom: 15px;
+  margin: 0px auto 15px auto;
   border: 2px solid #fff;
   border-radius: 50px;
   padding-top: 5px;
+  background-color: inherit;
 }
-.button a:hover {
+.button:hover {
   background-color: #ab47bc;
   color: #fff;
+}
+@media (max-width: 769px) {
+  .inner-container {
+    width: 100%;
+  }
+}
+#login-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+  background-color: #212121;
+}
+form {
+  margin: 0 auto;
+  width: 100%;
+}
+.input-field {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+input,
+textarea,
+select {
+  padding: 10px;
+  width: 100%;
+  border: 0px;
+  background-color: transparent;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}
+input:focus,
+textarea:focus {
+  background-color: #ff8a65;
+}
+select {
+  cursor: pointer;
+  border-radius: 0px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.errors {
+  padding: 0px;
+}
+.errors li {
+  list-style: none;
+  color: #f44336;
+  text-align: center;
 }
 article,
 aside,
@@ -204,6 +262,23 @@ input::-moz-focus-inner {
 * {
   box-sizing: border-box;
 }
+label,
+.label {
+  padding-left: 10px;
+  color: #fff;
+  display: block;
+}
+.for-radio label {
+  display: inline-block;
+  padding: 0px 15px;
+}
+.for-radio span.label {
+  margin-bottom: 15px;
+}
+.for-radio input {
+  display: inline-block;
+  width: auto;
+}
 html {
   font-size: 62.5%;
 }
@@ -220,6 +295,21 @@ h2 {
   color: #64ffda;
   text-shadow: 2px 2px #212121;
 }
-a {
+a,
+button {
   font-size: 3rem;
+}
+.welcome-container {
+  min-height: 100vh;
+  background: #212121;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.welcome {
+  width: 100%;
+  text-align: center;
 }

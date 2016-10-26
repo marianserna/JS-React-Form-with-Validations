@@ -46,22 +46,34 @@ class LogIn extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.login.bind(this)}>
-        {this.renderErrors()}
-        <input type="text" ref={(input) => { this.usernameInput = input}} />
-        <input type="password" ref={(input) => { this.passwordInput = input}} />
-        <button>Log In</button>
-        <Link to='/'>CANCEL</Link>
-      </form>
+      <div id="login-wrapper">
+        <div className="inner-container">
+          <form onSubmit={this.login.bind(this)}>
+            {this.renderErrors()}
+            <div className="input-field">
+              <input type="text" placeholder="Username" ref={(input) => { this.usernameInput = input}} />
+            </div>
+            <div className="input-field">
+              <input type="password" placeholder="Password" ref={(input) => { this.passwordInput = input}} />
+            </div>
+            <div className="input-field">
+              <button className="button">Log In</button>
+              <Link to='/' className="button">Cancel</Link>
+            </div>
+          </form>
+        </div>
+      </div>
     )
   }
 
   renderErrors() {
-    return (
-      <ul>
-        {this.renderErrorValues()}
-      </ul>
-    )
+    if (this.state.errors.length > 0) {
+      return (
+        <ul className="errors">
+          {this.renderErrorValues()}
+        </ul>
+      )
+    }
   }
 
   renderErrorValues() {

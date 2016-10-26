@@ -14,10 +14,8 @@ class Landing extends React.Component {
         </div>
 
         <div className="inner-container">
-          <div className="button">
-            <Link to='/login' className="log">Log In</Link>
-            <Link to='/signup' className="sign">Sign Up</Link>
-          </div>
+          <Link to='/login' className="button log">Log In</Link>
+          <Link to='/signup' className="button sign">Sign Up</Link>
         </div>
       </div>
     )

@@ -1,0 +1,51 @@
+#login-wrapper
+  display flex
+  align-items center
+  justify-content center
+  min-height 100vh
+  background-color #212121
+
+form
+  margin 0 auto
+  width 100%
+
+.input-field
+  width 100%
+  text-align center
+  padding 25px
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none
+}
+
+input, textarea, select {
+  padding: 10px;
+  width: 100%;
+  border: 0px;
+  background-color: transparent;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 16px
+}
+
+input:focus, textarea:focus {
+  background-color: #FF8A65;
+}
+
+select
+  cursor pointer
+  border-radius 0px
+  appearance none
+  -webkit-appearance none
+  -moz-appearance none
+
+.errors
+  padding 0px
+
+  li
+    list-style: none
+    color #f44336
+    text-align center

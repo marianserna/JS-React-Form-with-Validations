@@ -17,7 +17,9 @@ class Welcome extends React.Component {
 
   render() {
     return(
-      <h2>Welcome, {this.state.user.username}</h2>
+      <div className="welcome-container">
+        <h2 className="welcome">Welcome, {this.state.user.username}!</h2>
+      </div>
     )
   }
 }
