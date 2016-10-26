@@ -28,9 +28,11 @@ class SignUp extends React.Component {
       age: this.ageInput.value,
       gender: this.gender
     }
-    // store forms input values into localStorage
-    // Redirect user to fake dashboard
-    this.validate(user);
+
+    if (this.validate(user)) {
+      this.saveUser(user);
+      this.context.router.transitionTo('/welcome');
+    }
   }
 
   validate(user) {
@@ -43,7 +45,7 @@ class SignUp extends React.Component {
       newErrors.push("Password can't be empty")
     }
 
-    if (user.password.size < 8 || user.password.size > 20) {
+    if (user.password.length < 8 || user.password.size > 20) {
       newErrors.push("Password can't be shorter than 8 characters or longer than 20")
     }
 
@@ -71,7 +73,7 @@ class SignUp extends React.Component {
       newErrors.push("You must select a gender")
     }
 
-    if (parseInt(user.age) < 12) {
+    if (parseInt(user.age, 10) < 12) {
       newErrors.push("Sorry, you're too young to be filling out this form")
     }
 
@@ -80,6 +82,12 @@ class SignUp extends React.Component {
     }
     // errors is now == to newErrors
     this.setState({errors: newErrors})
+
+    return (newErrors.length === 0);
+  }
+
+  saveUser(user) {
+    localStorage.user = JSON.stringify(user);
   }
 
   changeGender(e) {
@@ -160,6 +168,10 @@ class SignUp extends React.Component {
       )
     });
   }
+}
+
+SignUp.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default SignUp;

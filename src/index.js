@@ -9,6 +9,7 @@ import Landing from './components/Landing';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import NotFound from './components/NotFound';
+import Welcome from './components/Welcome';
 
 const Root = () => {
   return(
@@ -18,6 +19,7 @@ const Root = () => {
         <Match exactly pattern="/" component={Landing} />
         <Match exactly pattern="/login" component={LogIn} />
         <Match exactly pattern="/signup" component={SignUp} />
+        <Match exactly pattern="/welcome" component={Welcome} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>

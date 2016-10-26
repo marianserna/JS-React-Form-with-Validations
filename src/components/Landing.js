@@ -5,12 +5,19 @@ class Landing extends React.Component {
   render() {
     return(
       <div className='container'>
-        <div className="left">
-          <Link to='/login'>Log In</Link>
+        <div className="middle">
+          <h2>
+            <span id="color1">COLOR</span>
+            <br/>
+          <span id="color2">-MATIC</span>
+          </h2>
         </div>
-        <div className="middle"></div>
-        <div className="right">
-          <Link to='/signup'>Sign Up</Link>
+
+        <div className="inner-container">
+          <div className="button">
+            <Link to='/login' className="log">Log In</Link>
+            <Link to='/signup' className="sign">Sign Up</Link>
+          </div>
         </div>
       </div>
     )

@@ -1,3 +1,49 @@
+.container {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #212121;
+}
+.inner-container {
+  width: 35vw;
+  height: 80vh;
+  margin: 0 auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.middle h2 {
+  display: block;
+  margin: 50px;
+  padding: 20px;
+}
+.button {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column;
+      flex-flow: column;
+}
+.button a.sign,
+.button a.log {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding-top: 5px;
+}
+.button a:hover {
+  background-color: #ab47bc;
+  color: #fff;
+}
 article,
 aside,
 details,
@@ -162,9 +208,18 @@ html {
   font-size: 62.5%;
 }
 body {
-  background: #d4d4d4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Hind Guntur', sans-serif;
   font-size: 2rem;
+}
+h2 {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 7rem;
+  font-weight: bold;
+  color: #64ffda;
+  text-shadow: 2px 2px #212121;
+}
+a {
+  font-size: 3rem;
 }
