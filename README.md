@@ -1,10 +1,11 @@
-Hello mundo!
+# JS React Form With Validations
 
-Welcome to my last project (at the time of writing this README). This is almost my first React project. Wohoo! It is the result of a very rushed school assignment.
-We were tasked with creating a simple HTML form with JS validation. However I said...But why would I do this? I have already done this in a previous course. Aha! -I thought- I'm gonna do it as a React project! But...do I know React? Well, I didn't know much, I had been trying to do Wes Bos' React course and it was fun so I used his starter structure to create my own React project. And guess what, I submitted it just 2 minutes before the dealine.
+This small project contains 4 components (pages). It was built for a school project and also as a way to practice Javascript and React. For the styling of the forms I have used Stylus (which compiles to CSS).
 
-Anyways, this was my first time using stylus, how fun! I learned a lot, but evidently I still have a long way to go.
 
-A la prochaine!
+## The Components
 
-xoxo!
+- Landing: Provides the Login and Sign Up links when the user first arrives... the home page.
+- SignUp: Provides the signup form along with its validations. The user is then stored in local storage.
+- LogIn: Provides logging in and validating the username/password against what is in local storage.
+- Welcome: Provides a welcome message to the user after login or signup. User info is read from local storage.
