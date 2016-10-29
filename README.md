@@ -2,6 +2,7 @@
 
 This small project contains 4 components (pages). It was built for a school project and also as a way to practice Javascript and React. For the styling of the forms I have used Stylus (which compiles to CSS).
 
+You can see this project which was deployed to Heroku at https://fast-anchorage-19393.herokuapp.com
 
 ## The Components
 
