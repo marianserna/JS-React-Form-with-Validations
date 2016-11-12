@@ -1,3 +1,12 @@
+export function api_host() {
+  // Check if we are running locally
+  if (window.location.hostname === 'localhost') {
+    return 'http://localhost:8000';
+  } else {
+    return 'https://formapi.herokuapp.com';
+  }
+}
+
 export function rando(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { api_host } from '../helpers';
 
 class LogIn extends React.Component {
   constructor() {
@@ -11,9 +12,7 @@ class LogIn extends React.Component {
 
   login(e) {
     e.preventDefault();
-    if (this.validate()) {
-      this.context.router.transitionTo('/welcome');
-    }
+    this.validate();
   }
 
   validate() {
@@ -26,23 +25,41 @@ class LogIn extends React.Component {
       newErrors.push("Password can't be empty")
     }
 
-    if(newErrors.length === 0) {
-
-      if (localStorage.user === undefined || localStorage.user === null) {
-        newErrors.push('Your username or password is incorrect');
-      } else {
-        const user = JSON.parse(localStorage.user);
-        if (user.username !== this.usernameInput.value || user.password !== this.passwordInput.value) {
-          newErrors.push('Your username or password is incorrect');
-        }
-      }
+    if (newErrors.length > 0) {
+      this.setState({
+        errors: newErrors
+      });
+    } else {
+      this.remoteValidate();
     }
-
-    this.setState({errors: newErrors})
-
-    return (newErrors.length === 0);
   }
 
+  remoteValidate() {
+    let data = new FormData();
+    data.append('username', this.usernameInput.value);
+    data.append('password', this.passwordInput.value);
+
+    fetch(`${api_host()}/login.php`, {
+      headers: {
+        'Access-Control-Allow-Origin': `${window.location.protocol}//${window.location.host}`,
+        'Accept': 'application/json'
+      },
+      mode: 'cors',
+      method: 'post',
+      body: data
+    }).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      if (json.result === true) {
+        sessionStorage.user = JSON.stringify(json.user);
+        this.context.router.transitionTo('/welcome');
+      } else {
+        this.setState({
+          errors: json.errors
+        });
+      }
+    }.bind(this));
+  }
 
   render() {
     return(

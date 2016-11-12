@@ -1,5 +1,5 @@
 import React from 'react';
-import { countries } from '../helpers'
+import { countries, api_host } from '../helpers'
 import { Link } from 'react-router';
 
 class SignUp extends React.Component {
@@ -18,8 +18,8 @@ class SignUp extends React.Component {
       username: this.usernameInput.value,
       password: this.passwordInput.value,
       confirmPassword: this.confirmPasswordInput.value,
-      firstName: this.firstNameInput.value,
-      lastName: this.lastNameInput.value,
+      first_name: this.firstNameInput.value,
+      last_name: this.lastNameInput.value,
       email: this.emailInput.value,
       phone: this.phoneInput.value,
       country: this.countryInput.value,
@@ -31,7 +31,6 @@ class SignUp extends React.Component {
 
     if (this.validate(user)) {
       this.saveUser(user);
-      this.context.router.transitionTo('/welcome');
     }
   }
 
@@ -57,15 +56,15 @@ class SignUp extends React.Component {
       newErrors.push("Yikes! Password and Confirm Password must match")
     }
 
-    if (user.firstName === "") {
+    if (user.first_name === "") {
       newErrors.push("First Name can't be empty")
     }
 
-    if (user.firstName.length > 30) {
+    if (user.first_name.length > 30) {
       newErrors.push("Your first name can't be longer than 30 characters")
     }
 
-    if (user.lastName === "") {
+    if (user.last_name === "") {
       newErrors.push("Last Name must be filled")
     }
 
@@ -87,7 +86,33 @@ class SignUp extends React.Component {
   }
 
   saveUser(user) {
-    localStorage.user = JSON.stringify(user);
+
+    let data = new FormData();
+
+    for (let key in user) {
+      data.append(key, user[key]);
+    }
+
+    fetch(`${api_host()}/signup.php`, {
+      headers: {
+        'Access-Control-Allow-Origin': `${window.location.protocol}//${window.location.host}`,
+        'Accept': 'application/json'
+      },
+      mode: 'cors',
+      method: 'post',
+      body: data
+    }).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      if (json.result === true) {
+        sessionStorage.user = JSON.stringify(json.user);
+        this.context.router.transitionTo('/welcome');
+      } else {
+        this.setState({
+          errors: json.errors
+        });
+      }
+    }.bind(this));
   }
 
   changeGender(e) {

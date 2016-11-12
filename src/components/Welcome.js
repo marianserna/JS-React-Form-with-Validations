@@ -5,15 +5,8 @@ class Welcome extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      user: JSON.parse(sessionStorage.user)
     };
-  }
-
-  // before filter (before React initializes this component)
-  componentWillMount() {
-    this.setState({
-      user: JSON.parse(localStorage.user)
-    });
   }
 
   render() {
